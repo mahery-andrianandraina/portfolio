@@ -1,0 +1,368 @@
+/* General styling */
+body, html {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  font-family: 'Press Start 2P', monospace;
+  color: #fff;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+  cursor: url("cursor/Bob\ Lennon\ -\ Normal\ Select.cur"), auto;
+ 
+}
+body::before{
+content:"";
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-image: url('images/minecraft-server-bg.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-position: center;
+filter: blur(1px);
+opacity: 1;
+z-index: -1;
+}
+/* Page sections */
+.page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  scroll-snap-align: start;
+  padding: 40px;
+  text-align: center;
+
+}
+
+/* Section content wrapper */
+.section-content {
+  max-width: 800px;
+}
+
+/* Headings */
+h1, h2, h3 {
+  margin-bottom: 20px;
+}
+
+/* Icons */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+ul li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+ul li i {
+  font-size: 2.5em;
+  margin-bottom: 8px;
+  transition: transform 0.3s ease;
+}
+
+ul li:hover i {
+  transform: scale(1.2);
+  color: #66ccff;
+}
+
+.tech-icons span,
+.contact-icons span {
+  font-size: 0.8em;
+  margin-top: 4px;
+}
+
+/* Contact icons */
+.contact-icons a {
+  text-decoration: none;
+  color: white;
+  text-align: center;
+}
+
+/* Projects */
+.project-list {
+  list-style-type: disc;
+  padding-left: 40px;
+  line-height: 1.8;
+  font-size: 14px;
+}
+
+.smoke-pop {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 20%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: smokePop 1.5s ease-out forwards;
+  filter: blur(10px);
+  z-index: 20;
+}
+
+@keyframes smokePop {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  80% {
+    transform: scale(2.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+h1{
+  font-size: 3em;
+  font-weight: bold;
+  color: #fbff00;
+  text-shadow: 0 0 30px #ffd900,
+  0 0 20px #ffc400,
+  0 0 30px #ff1100;
+  animation: clignotement 10s infinite alternate;
+}
+@keyframes clignotement{
+  0%{
+    opacity: 1;
+  }
+  50%{
+    opacity: 0.3;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+.profile-photo {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.profile-photo img {
+  width: 180px;
+  height: 180px;
+  border-radius: 10px;
+  object-fit: cover;
+
+  /* Propriétés de la bordure et de l'ombre qui seront animées */
+  border: 3px solid #ffd000; /* Couleur initiale de la bordure */
+  box-shadow: 0 0 10px #ffd000; /* Ombre initiale */
+
+  /* Animation pour le clignotement */
+  animation: glow-clignote 5s infinite alternate ease-in-out;
+}
+
+/* Définition de l'animation de clignotement */
+@keyframes glow-clignote {
+  0% {
+    /* État initial / faible luminosité */
+    border-color: #ffd000; /* Couleur d'origine ou légèrement atténuée */
+    box-shadow: 0 0 10px #ffd000; /* Ombre de base */
+  }
+  50% {
+    /* État de pleine luminosité / clignotement maximal */
+    border-color: #ffffff; /* Bordure blanche éclatante (ou une couleur plus vive comme un vert fluo si vous voulez Matrix) */
+    box-shadow: 0 0 30px 15px #ffe066; /* Ombre plus large et plus intense, légèrement plus claire */
+  }
+  100% {
+    /* Retour à l'état initial / faible luminosité */
+    border-color: #ffd000;
+    box-shadow: 0 0 10px #ffd000;
+  }
+}
+.fireflies-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Permet de cliquer à travers les lucioles */
+  z-index: 1; /* S'assure qu'elles sont au-dessus de tout le reste */
+}
+
+.firefly {
+  position: absolute;
+  background: #ffcc00; /* Couleur de la luciole (jaune/orange) */
+  border-radius: 50%; /* Forme circulaire */
+  box-shadow: 0 0 10px 5px rgba(255, 204, 0, 0.7); /* Effet lumineux */
+  opacity: 0; /* Commence invisible */
+  animation:
+      firefly-move linear infinite,
+      firefly-flicker ease-in-out infinite;
+}
+
+/* Définition de l'animation de mouvement */
+@keyframes firefly-move {
+  0% {
+      transform: translate(0, 0) scale(0.5);
+      opacity: 0;
+  }
+  10% {
+      opacity: 1;
+      transform: translate(calc(var(--rand-x-start)), calc(var(--rand-y-start))) scale(0.7);
+  }
+  100% {
+      transform: translate(calc(var(--rand-x-end)), calc(var(--rand-y-end))) scale(0.5);
+      opacity: 0;
+  }
+}
+
+/* Définition de l'animation de scintillement */
+@keyframes firefly-flicker {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 0.3; }
+}
+
+/* Attribution de valeurs aléatoires pour chaque luciole (plus complexe, mais plus réaliste) */
+/* C'est là que ça devient un peu répétitif pour CSS pur */
+/* Idéalement, on générerait cela avec JS ou un préprocesseur CSS */
+
+.firefly:nth-child(1) {
+  width: 5px; height: 5px;
+  top: 10%; left: 20%;
+  animation-duration: 15s;
+  animation-delay: 0s;
+  --rand-x-start: -50px; --rand-y-start: 100px;
+  --rand-x-end: 200px; --rand-y-end: -150px;
+}
+.firefly:nth-child(2) {
+  width: 6px; height: 6px;
+  top: 50%; left: 80%;
+  animation-duration: 18s;
+  animation-delay: 2s;
+  --rand-x-start: 100px; --rand-y-start: -50px;
+  --rand-x-end: -250px; --rand-y-end: 120px;
+}
+.firefly:nth-child(3) {
+  width: 4px; height: 4px;
+  top: 80%; left: 10%;
+  animation-duration: 12s;
+  animation-delay: 4s;
+  --rand-x-start: -100px; --rand-y-start: -80px;
+  --rand-x-end: 150px; --rand-y-end: 200px;
+}
+.firefly:nth-child(4) {
+  width: 7px; height: 7px;
+  top: 30%; left: 50%;
+  animation-duration: 20s;
+  animation-delay: 6s;
+  --rand-x-start: 50px; --rand-y-start: 200px;
+  --rand-x-end: -100px; --rand-y-end: -180px;
+}
+.firefly:nth-child(5) {
+  width: 5px; height: 5px;
+  top: 60%; left: 30%;
+  animation-duration: 16s;
+  animation-delay: 8s;
+  --rand-x-start: -20px; --rand-y-start: -100px;
+  --rand-x-end: 180px; --rand-y-end: 50px;
+}
+
+/* Ajoutez plus de .firefly:nth-child() pour plus de lucioles */
+
+/* Pour rendre les mouvements vraiment aléatoires, vous devriez idéalement
+ utiliser des variables CSS personnalisées et les générer via JavaScript
+ ou un préprocesseur CSS comme Sass/Less pour des boucles. */
+/* Style général pour les couches de brouillard */
+
+/* Basic styling for the modal */
+.mail-modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.mail-modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  max-width: 500px; /* Max width for larger screens */
+  position: relative;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Form styling */
+#contactForm label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+#contactForm input[type="text"],
+#contactForm input[type="email"],
+#contactForm textarea {
+  width: calc(100% - 22px); /* Account for padding and border */
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+#contactForm button {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+}
+
+#contactForm button:hover {
+  background-color: #45a049;
+}
+
+/* Add some styling for your minecraft-guy if you haven't already */
+.minecraft-guy {
+  /* Example: Make it clickable and give it a visual cue */
+  width: 100px; /* Adjust as needed */
+  height: 100px; /* Adjust as needed */
+  background-color: brown; /* Just a placeholder */
+  cursor: pointer;
+  position: absolute; /* Or wherever you want it */
+  top: 50px;
+  left: 50px;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 100px;
+  color: white;
+  font-weight: bold;
+  /* You'd likely use a background-image here for an actual Minecraft character */
+}

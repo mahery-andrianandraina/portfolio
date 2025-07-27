@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mahery - Java Developer</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+ 
+<section class="page" id="welcome">
+  <div class="section-content">
+    <p class="matrix">Welcome to my world !</p>
+    <div class="profile-photo">
+      <img src="images/mahery.PNG" alt="Photo de Mahery">
+    </div>
+    
+    <h1 class="matrix">Mahery ANDRIANANDRAINA</h1>
+    <p>
+      <span class="matrix">I am a passionate Java developer driven by a strong desire to create robust and scalable applications.</span><br>
+      <span class="matrix">Eager to collaborate with experienced professionals, I am constantly seeking new challenges that will help me grow and expand my technical skills.</span><br>
+      <span class="matrix">Open to internships, freelance projects, or full-time roles,</span><br>
+      <span class="matrix">I am committed to contributing to innovative and impactful solutions.</span>
+    </p>
+  </div>
+</section>
+
+
+<section class="page" id="technos">
+  <h2 class="matrix">Technologies & Projects</h2>
+  <ul class="tech-icons">
+    <li title="Java">
+      <i class="fab fa-java"></i>
+      <span class="matrix">Java</span>
+    </li>
+    <li title="Spring Boot">
+      <i class="fas fa-leaf"></i>
+      <span class="matrix">Spring Boot</span>
+    </li>
+    <li title="Hibernate">
+      <i class="fas fa-project-diagram"></i>
+      <span class="matrix">Hibernate</span>
+    </li>
+    <li title="Maven">
+      <i class="fas fa-cogs"></i>
+      <span class="matrix">Maven</span>
+    </li>
+    <li title="MySQL">
+      <i class="fas fa-database"></i>
+      <span class="matrix">MySQL</span>
+    </li>
+  </ul>
+</section>
+
+<section class="page" id="projects">
+  <div class="projects">
+    <h3>Completed Projects</h3>
+    <ul class="project-list">
+      <li class="matrix">Canevas des actions commerciales – Java & MySQL</li>
+      <li class="matrix">Portfolio Website – HTML, CSS & JavaScript</li>
+      <li class="matrix">AZ Lyrics – Java & MySQL</li>
+    </ul>
+  </div>
+</section>
+
+
+
+<section class="page" id="contact">
+  <h2 class="matrix">Social Media</h2>
+  <ul class="contact-icons">
+    <li><a href="mailto:maheryelo2@gmail.com" title="Email" target="_blank"><i class="fas fa-envelope"></i></a></li>
+    <li><a href="https://linkedin.com/in/mahery-andrianandraina" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+    <li><a href="https://github.com/boukely" title="GitHub" target="_blank"><i class="fab fa-github"></i></a></li>
+    <li><a href="https://facebook.com" title="Facebook" target="_blank"><i class="fab fa-facebook"></i></a></li>
+    <li><a href="https://tiktok.com" title="tiktok" target="_blank"><i class="fab fa-tiktok"></i></a></li>
+  </ul>
+</section>
+
+<div class="smoke-pop" style="top: 70%; left: 45%;"></div>
+
+<script>
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*";
+
+  function matrixEffect(el) {
+    const originalText = el.dataset.original;
+    let revealIndex = 0;
+
+    let interval = setInterval(() => {
+      let fakeText = "";
+      for (let i = 0; i < originalText.length; i++) {
+        fakeText += originalText[i] === " " ? " " : chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      el.textContent = fakeText;
+    }, 50);
+
+    setTimeout(() => {
+      clearInterval(interval);
+      let reveal = setInterval(() => {
+        let shown = "";
+        for (let i = 0; i < originalText.length; i++) {
+          if (i <= revealIndex) {
+            shown += originalText[i];
+          } else {
+            shown += originalText[i] === " " ? " " : chars.charAt(Math.floor(Math.random() * chars.length));
+          }
+        }
+        el.textContent = shown;
+        revealIndex++;
+        if (revealIndex === originalText.length) clearInterval(reveal);
+      }, 50);
+    }, 400);
+  }
+
+  // Stocke le texte original
+  document.querySelectorAll('.matrix').forEach(el => {
+    el.dataset.original = el.textContent;
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        matrixEffect(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.matrix').forEach(el => {
+    observer.observe(el);
+  });
+</script>
+<div class="fireflies-container">
+  <div class="firefly"></div>
+  <div class="firefly"></div>
+  <div class="firefly"></div>
+  <div class="firefly"></div>
+  <div class="firefly"></div>
+  <div class="firefly"></div>
+  <div class="firefly"></div>
+  <div class="firefly"></div>
+  <div class="firefly"></div>
+  <div class="firefly"></div>
+</div>
+</body>
+</html>
