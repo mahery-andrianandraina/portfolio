@@ -1,4 +1,27 @@
 /* General styling */
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 15px 0;
+  position: sticky; /* reste visible en haut pendant le scroll */
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1em;
+  transition: color 0.3s;
+}
+
+.navbar a:hover {
+  color: yellow;
+}
+
 body, html {
   margin: 0;
   padding: 0;
