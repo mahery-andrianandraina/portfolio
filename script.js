@@ -12,3 +12,15 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   alert("Message envoyé !");
   closeModal();
 });
+<script>
+  const indicator = document.getElementById('scrollIndicator');
+
+  function toggleIndicator() {
+    const atBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 5;
+    indicator.style.display = atBottom ? 'none' : 'block';
+  }
+
+  window.addEventListener('scroll', toggleIndicator);
+  window.addEventListener('resize', toggleIndicator);
+  toggleIndicator();
+</script>
