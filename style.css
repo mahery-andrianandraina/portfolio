@@ -1,49 +1,46 @@
 /* General styling */
+/* HEADER STICKY */
 header {
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
+/* NAVBAR STYLING */
 .navbar {
   display: flex;
   justify-content: center;
   gap: 30px;
   background-color: rgba(0, 0, 0, 0.7);
   padding: 15px 0;
-  position: sticky; /* reste visible en haut pendant le scroll */
+  position: sticky;
   top: 0;
   z-index: 1000;
   font-size: 3em;
   font-weight: bold;
   color: #fbff00;
-  text-shadow: 0 0 30px #ffd900,
-  0 0 20px #ffc400,
-  0 0 30px #ff1100;
+  text-shadow:
+    0 0 30px #ffd900,
+    0 0 20px #ffc400,
+    0 0 30px #ff1100;
   animation: clignotement 10s infinite alternate;
 }
-@keyframes clignotement{
-  0%{
-    opacity: 1;
-  }
-  50%{
-    opacity: 0.3;
-  }
-  100%{
-    opacity: 1;
-  }
+
+/* ANIMATION */
+@keyframes clignotement {
+  0% { opacity: 1; }
+  100% { opacity: 0.8; }
 }
 
-.navbar a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1.1em;
-  transition: color 0.3s;
-}
-
-.navbar a:hover {
-  color: yellow;
+/* RESPONSIVE : NAVBAR COMPACTE SUR PETIT ÉCRAN */
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;       /* Les liens passent en colonne */
+    gap: 10px;                    /* Moins d’espace entre les liens */
+    padding: 10px 0;              /* Moins de padding */
+    font-size: 1.5em;             /* Texte plus petit */
+    text-align: center;           /* Centrer le texte */
+  }
 }
 
 body, html {
