@@ -14,6 +14,25 @@ header {
   position: sticky; /* reste visible en haut pendant le scroll */
   top: 0;
   z-index: 1000;
+  font-size: 3em;
+  font-weight: bold;
+  color: #fbff00;
+  text-shadow: 0 0 30px #ffd900,
+  0 0 20px #ffc400,
+  0 0 30px #ff1100;
+  animation: clignotement 10s infinite alternate;
+}
+@keyframes clignotement{
+  0%{
+    opacity: 1;
+  }
+  50%{
+    opacity: 0.3;
+  }
+  100%{
+    opacity: 1;
+  }
+}
 }
 
 .navbar a {
