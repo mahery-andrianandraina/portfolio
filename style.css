@@ -50,6 +50,7 @@ header {
   position: sticky;
   top: 0;
   height: 60px; /* hauteur fixe */
+  font-size: 16px; /* ou la taille que tu utilises pour le body */
 }
 
 main {
