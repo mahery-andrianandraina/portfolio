@@ -446,18 +446,20 @@ h1{
   0%, 100% { transform: translateX(-50%) translateY(0); }
   50% { transform: translateX(-50%) translateY(-10px); }
 }
-.btn-cv {
-  display: inline-block;
-  padding: 12px 20px;
-  background-color: #4CAF50;
+.bouton-cv {
+  position: fixed;     /* reste fixe à l’écran */
+  bottom: 20px;        /* 20px du bas */
+  right: 20px;         /* 20px du bord droit */
+  z-index: 1000;       /* reste au-dessus des autres éléments */
+  padding: 10px 20px;  /* un peu d'espace interne */
+  background-color: #007BFF;
   color: white;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: bold;
-  transition: background-color 0.3s;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.btn-cv:hover {
-  background-color: #45a049;
+.bouton-cv:hover {
+  background-color: #0056b3;
 }
 
