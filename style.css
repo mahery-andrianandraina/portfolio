@@ -1,47 +1,57 @@
 /* General styling */
 /* HEADER STICKY */
-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
 /* NAVBAR STYLING */
 .navbar {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 2vw; /* Espace proportionnel à l'écran */
   background-color: rgba(0, 0, 0, 0.7);
-  padding: 15px 0;
+  padding: 0.8vw 0;
   position: sticky;
   top: 0;
   z-index: 1000;
-  font-size: 3em;
+  font-size: clamp(1rem, 2vw, 2.2rem); /* Taille qui s’adapte à l'écran */
   font-weight: bold;
   color: #fbff00;
   text-shadow:
-    0 0 30px #ffd900,
-    0 0 20px #ffc400,
-    0 0 30px #ff1100;
-  animation: clignotement 10s infinite alternate;
+    0 0 15px #ffd900,
+    0 0 10px #ffc400,
+    0 0 15px #ff1100;
+  animation: clignotement 8s infinite alternate;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2); /* Ligne discrète en bas */
+  backdrop-filter: blur(5px); /* Effet verre dépoli */
+}
+
+/* HOVER EFFECT */
+.navbar a {
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, text-shadow 0.3s ease;
+}
+
+.navbar a:hover {
+  transform: scale(1.1);
+  text-shadow:
+    0 0 25px #fff000,
+    0 0 35px #ff6600;
 }
 
 /* ANIMATION */
 @keyframes clignotement {
   0% { opacity: 1; }
-  100% { opacity: 0.8; }
+  100% { opacity: 0.9; }
 }
 
 /* RESPONSIVE : NAVBAR COMPACTE SUR PETIT ÉCRAN */
 @media screen and (max-width: 768px) {
   .navbar {
-    flex-direction: column;       /* Les liens passent en colonne */
-    gap: 10px;                    /* Moins d’espace entre les liens */
-    padding: 10px 0;              /* Moins de padding */
-    font-size: 1.5em;             /* Texte plus petit */
-    text-align: center;           /* Centrer le texte */
+    flex-direction: column;
+    gap: 0.8em;
+    padding: 0.5em 0;
+    font-size: clamp(1rem, 4vw, 1.5rem);
   }
 }
+
 
 body, html {
   margin: 0;
