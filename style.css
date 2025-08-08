@@ -1,28 +1,23 @@
-/* General styling */
-/* HEADER STICKY */
-/* NAVBAR STYLING */
 .navbar {
   display: flex;
   justify-content: center;
-  gap: 2vw; /* Espace proportionnel à l'écran */
+  gap: 2vw; /* espace horizontal plus petit */
   background-color: rgba(0, 0, 0, 0.7);
-  padding: 0.8vw 0;
+  padding: 8px 0; /* réduit la hauteur */
   position: sticky;
   top: 0;
   z-index: 1000;
-  font-size: clamp(1rem, 2vw, 2.2rem); /* Taille qui s’adapte à l'écran */
+  font-size: clamp(1rem, 1.5vw, 1.6rem); /* texte plus petit et adaptable */
   font-weight: bold;
   color: #fbff00;
   text-shadow:
-    0 0 15px #ffd900,
-    0 0 10px #ffc400,
-    0 0 15px #ff1100;
+    0 0 12px #ffd900,
+    0 0 8px #ffc400,
+    0 0 12px #ff1100;
   animation: clignotement 8s infinite alternate;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.2); /* Ligne discrète en bas */
-  backdrop-filter: blur(5px); /* Effet verre dépoli */
 }
 
-/* HOVER EFFECT */
+/* HOVER */
 .navbar a {
   text-decoration: none;
   color: inherit;
@@ -30,10 +25,10 @@
 }
 
 .navbar a:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
   text-shadow:
-    0 0 25px #fff000,
-    0 0 35px #ff6600;
+    0 0 18px #fff000,
+    0 0 28px #ff6600;
 }
 
 /* ANIMATION */
@@ -62,7 +57,7 @@ main {
 }
 body, html {
   margin: 0;
-  padding-top: 60px; /* laisse la place pour le header */
+  padding-top: 30px; /* laisse la place pour le header */
   scroll-behavior: smooth;
   font-family: 'Press Start 2P', monospace;
   color: #fff;
