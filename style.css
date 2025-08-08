@@ -493,6 +493,17 @@ h1{
   .btn-cv:hover {
     color: #000;
   }
+.tech-icons li a {
+  display: flex;          /* pour organiser en colonne */
+  flex-direction: column; /* icône au-dessus, texte en dessous */
+  align-items: center;    /* centrer horizontalement */
+  color: white;           /* texte + icône en blanc */
+  text-decoration: none;  /* enlever le soulignement du lien */
+}
+
+.tech-icons li a:hover {
+  color: #0f0; /* par exemple, couleur au survol */
+}
 
   .btn-cv:active {
     transform: translateY(2px);
