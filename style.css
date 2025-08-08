@@ -446,20 +446,56 @@ h1{
   0%, 100% { transform: translateX(-50%) translateY(0); }
   50% { transform: translateX(-50%) translateY(-10px); }
 }
-.bouton-cv {
-  position: fixed;     /* reste fixe à l’écran */
-  bottom: 20px;        /* 20px du bas */
-  right: 20px;         /* 20px du bord droit */
-  z-index: 1000;       /* reste au-dessus des autres éléments */
-  padding: 10px 20px;  /* un peu d'espace interne */
-  background-color: #007BFF;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-.bouton-cv:hover {
-  background-color: #0056b3;
-}
+  /* Animation clignotement irrégulier (style ampoule grillée) */
+  @keyframes clignotementGrille {
+    0%   { background-color: #ffb800; box-shadow: 0 0 15px #ffb800; }
+    10%  { background-color: #4a4a4a; box-shadow: none; }
+    20%  { background-color: #ffb800; box-shadow: 0 0 12px #ffb800; }
+    25%  { background-color: #4a4a4a; box-shadow: none; }
+    40%  { background-color: #ffb800; box-shadow: 0 0 20px #ffb800; }
+    50%  { background-color: #4a4a4a; box-shadow: none; }
+    55%  { background-color: #ffb800; box-shadow: 0 0 10px #ffb800; }
+    60%  { background-color: #4a4a4a; box-shadow: none; }
+    75%  { background-color: #ffb800; box-shadow: 0 0 18px #ffb800; }
+    90%  { background-color: #4a4a4a; box-shadow: none; }
+    100% { background-color: #ffb800; box-shadow: 0 0 15px #ffb800; }
+  }
 
+  /* Style bouton */
+  .btn-cv {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px;
+    padding: 12px 20px;
+    color: #1c1c1c;
+    border: 5px solid #b07a00;
+    border-radius: 0;
+    cursor: pointer;
+    text-transform: uppercase;
+    user-select: none;
+
+    /* Couleur et effet soudure */
+    background-color: #ffb800;
+    box-shadow:
+      0 0 15px #ffb800,
+      inset 0 0 5px #b07a00,
+      2px 2px 0 #6b4c00,
+      -2px -2px 0 #6b4c00;
+
+    animation: clignotementGrille 3s infinite;
+    transition: color 0.3s ease;
+  }
+
+  .btn-cv:hover {
+    color: #000;
+  }
+
+  .btn-cv:active {
+    transform: translateY(2px);
+    animation-play-state: paused;
+    box-shadow: none;
+  }
