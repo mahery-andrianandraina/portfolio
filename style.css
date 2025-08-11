@@ -539,51 +539,62 @@ h1{
   }
 }
 .minecraft-form {
-  background: rgba(34, 139, 34, 0.85);
+  background: rgba(34, 139, 34, 0.85); /* Vert transparent */
   padding: 20px;
   border: 4px solid #3b2f2f;
   box-shadow: 0 0 20px #000;
   border-radius: 10px;
   width: 320px;
+  margin: 0 auto; /* Centre horizontalement */
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Espace entre les champs */
 }
 
 .minecraft-form h1 {
   text-align: center;
   color: #fff;
   font-size: 18px;
+  text-shadow: 2px 2px #000; /* Effet pixel Minecraft */
 }
 
-label {
+.minecraft-form label {
   display: block;
   margin: 8px 0 4px;
   color: #fff;
+  font-weight: bold;
+  text-shadow: 1px 1px #000;
 }
 
-input, textarea {
+.minecraft-form input,
+.minecraft-form textarea {
   width: 100%;
   padding: 6px;
   border: 2px solid #3b2f2f;
   border-radius: 4px;
-  font-family: inherit;
+  font-family: "Press Start 2P", monospace; /* Police pixel */
   font-size: 12px;
+  background: #fff;
 }
 
-textarea {
+.minecraft-form textarea {
   resize: none;
   height: 80px;
 }
 
-button {
+.minecraft-form button {
   background: #ffd500;
-  color: white;
+  color: black;
+  font-weight: bold;
   padding: 8px;
   width: 100%;
   border: 2px solid #3b2f2f;
   cursor: pointer;
   margin-top: 8px;
+  font-family: "Press Start 2P", monospace;
 }
 
-button:hover {
+.minecraft-form button:hover {
   background: #c9a700;
 }
 
