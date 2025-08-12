@@ -232,11 +232,22 @@ document.querySelectorAll('a').forEach(link => {
     </form>
   </div>
 </section>
-  <footer class="minecraft-copyright">
-  &copy; 2025 TonNom. Tous droits réservés.
-</footer>
+<div id="loader">
+  <div class="minecraft-loader">
+    <div class="block"></div>
+    <div class="block"></div>
+    <div class="block"></div>
+    <div class="text-glow">Loading world...</div>
+  </div>
+</div>
 
-</footer>
+<script>
+  window.addEventListener("load", function() {
+    setTimeout(function() {
+      document.getElementById("loader").style.display = "none";
+    }, 5000); // 5 secondes
+  });
+</script>
 
 </body>
 </html>
