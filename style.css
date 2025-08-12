@@ -607,4 +607,8 @@ h1{
   overflow: hidden;
   opacity: 0;
 }
+.minecraft-copyright {
+  font-family: 'Press Start 2P', monospace;
+  /* le reste pareil */
+}
 
