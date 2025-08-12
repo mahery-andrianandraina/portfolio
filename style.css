@@ -598,3 +598,13 @@ h1{
   background: #c9a700;
 }
 
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+}
+
