@@ -9,7 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 
-<body class="dark-theme"> <header>
+<body class="dark-theme">
+    <header>
         <nav class="navbar">
             <a href="#welcome"><i>About</i></a>
             <a href="#projects"><i>Projects</i></a>
@@ -18,15 +19,16 @@
             <a href="#formulaire"><i>Contact</i></a>
         </nav>
         <button id="themeToggleButton" class="theme-toggle-btn">
-            <i class="fas fa-sun"></i> </button>
+            <i class="fas fa-sun"></i>
+        </button>
     </header>
 
     <section class="page" id="welcome">
         <div class="section-content">
             <p class="matrix">Welcome to my world !</p>
-            <a href="bio.html" class="profile-link">
             <div class="profile-photo">
-                <img src="images/mahery.PNG" href="bio.html" class="profile-link" alt="Photo de Mahery">
+                <a href="bio.html" class="profile-link"> <img src="images/mahery.PNG" alt="Photo de Mahery">
+                </a>
             </div>
 
             <h1 class="matrix">Mahery ANDRIANANDRAINA</h1>
@@ -185,18 +187,23 @@
 
         document.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', e => {
-                e.preventDefault();
-                const href = link.getAttribute('href');
+                // Vérifie si le lien n'est pas l'image de profil cliquable
+                // Si l'élément cliqué ou un de ses parents est l'image, on laisse le comportement par défaut de la balise <a> pour l'image.
+                // Sinon, on applique l'effet de soudure aux autres liens.
+                if (!e.currentTarget.closest('.profile-photo')) {
+                    e.preventDefault();
+                    const href = link.getAttribute('href');
 
-                weldingEffect(link, () => {
-                    if (href && href !== '#') {
-                        if (link.getAttribute('target') === '_blank') {
-                            window.open(href, '_blank');
-                        } else {
-                            window.location.href = href;
+                    weldingEffect(link, () => {
+                        if (href && href !== '#') {
+                            if (link.getAttribute('target') === '_blank') {
+                                window.open(href, '_blank');
+                            } else {
+                                window.location.href = href;
+                            }
                         }
-                    }
-                });
+                    });
+                }
             });
         });
     </script>
