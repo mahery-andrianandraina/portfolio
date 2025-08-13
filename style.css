@@ -1,649 +1,571 @@
+/* Styles généraux */
+body, html {
+    margin: 0;
+    padding-top: 30px; /* laisse la place pour le header */
+    scroll-behavior: smooth;
+    font-family: 'Press Start 2P', monospace;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh;
+    cursor: url("cursor/Bob Lennon - Normal Select.cur"), auto;
+    /* Transition globale pour une animation douce des changements de thème */
+    transition: color 0.5s ease-in-out;
+}
+
+/* Thème sombre (par défaut) */
+body.dark-theme {
+    color: #fff; /* Texte blanc pour le thème sombre */
+}
+
+body.dark-theme::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/minecraft-server-bg.jpg'); /* Votre image de fond sombre */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    filter: blur(1px);
+    opacity: 1;
+    z-index: -1;
+    transition: background-image 0.5s ease-in-out, filter 0.5s ease-in-out; /* Transition pour l'image */
+}
+
+/* Thème clair */
+body.light-theme {
+    color: #fff; /* CHANGÉ: Texte blanc par défaut pour le thème clair */
+}
+
+body.light-theme::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/minecraft-background.jpg'); /* Votre nouvelle image de fond claire */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    filter: blur(0px); /* Moins de flou pour le thème clair si désiré */
+    opacity: 1;
+    z-index: -1;
+    transition: background-image 0.5s ease-in-out, filter 0.5s ease-in-out; /* Transition pour l'image */
+}
+
+/* --- Header & Navbar --- */
+header {
+    position: sticky;
+    top: 0;
+    height: 60px; /* hauteur fixe */
+    font-size: 16px; /* ou la taille que tu utilises pour le body */
+    background-color: transparent; /* Sera géré par la navbar */
+    display: flex; /* Pour positionner le bouton à côté de la navbar */
+    justify-content: space-between; /* Espacement entre navbar et bouton */
+    align-items: center;
+    padding: 0 20px; /* Ajoute un peu d'espace sur les côtés */
+    z-index: 1000;
+}
+
 .navbar {
-  display: flex;
-  justify-content: center;
-  gap: 2vw; /* espace horizontal plus petit */
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 8px 0; /* réduit la hauteur */
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  font-size: clamp(1rem, 1.5vw, 1.6rem); /* texte plus petit et adaptable */
-  font-weight: bold;
-  color: #fbff00;
-  text-shadow:
-    0 0 12px #ffd900,
-    0 0 8px #ffc400,
-    0 0 12px #ff1100;
-  animation: clignotement 8s infinite alternate;
+    display: flex;
+    justify-content: center;
+    gap: 2vw; /* espace horizontal plus petit */
+    padding: 8px 0; /* réduit la hauteur */
+    font-size: clamp(1rem, 1.5vw, 1.6rem); /* texte plus petit et adaptable */
+    font-weight: bold;
+    flex-grow: 1; /* Permet à la navbar de prendre l'espace disponible */
 }
 
-/* HOVER */
+/* Styles spécifiques à la navbar pour les thèmes */
+.dark-theme .navbar {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fbff00; /* Jaune d'origine */
+    text-shadow:
+      0 0 12px #ffd900,
+      0 0 8px #ffc400,
+      0 0 12px #ff1100;
+    animation: clignotement 8s infinite alternate;
+}
+
+.light-theme .navbar {
+    background-color: rgba(255, 255, 255, 0.7);
+    color: #39FF14; /* VERT NÉON pour le texte de la navbar en thème clair */
+    text-shadow: none; /* Pas d'ombre de texte pour le thème clair */
+    animation: none; /* Désactiver le clignotement en thème clair si désiré */
+}
+
+
+/* HOVER des liens de la navbar */
 .navbar a {
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.2s ease, text-shadow 0.3s ease;
+    text-decoration: none;
+    color: inherit; /* Hérite de la couleur définie sur .navbar */
+    transition: transform 0.2s ease, text-shadow 0.3s ease, color 0.3s ease; /* Ajout transition couleur */
 }
 
-.navbar a:hover {
-  transform: scale(1.05);
-  text-shadow:
-    0 0 18px #fff000,
-    0 0 28px #ff6600;
+.dark-theme .navbar a:hover {
+    transform: scale(1.05);
+    text-shadow:
+      0 0 18px #fff000,
+      0 0 28px #ff6600;
 }
 
-/* ANIMATION */
+.light-theme .navbar a:hover {
+    transform: scale(1.05);
+    color: #7CFC00; /* Vert plus clair au survol pour le thème clair */
+    text-shadow: none;
+}
+
+/* ANIMATION clignotement (pour thème sombre) */
 @keyframes clignotement {
-  0% { opacity: 1; }
-  100% { opacity: 0.9; }
+    0% { opacity: 1; }
+    100% { opacity: 0.9; }
 }
 
 /* RESPONSIVE : NAVBAR COMPACTE SUR PETIT ÉCRAN */
 @media screen and (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    gap: 0.8em;
-    padding: 0.5em 0;
-    font-size: clamp(1rem, 4vw, 1.5rem);
-  }
-}
-header {
-  position: sticky;
-  top: 0;
-  height: 60px; /* hauteur fixe */
-  font-size: 16px; /* ou la taille que tu utilises pour le body */
+    .navbar {
+        flex-direction: column;
+        gap: 0.8em;
+        padding: 0.5em 0;
+        font-size: clamp(1rem, 4vw, 1.5rem);
+    }
+    header {
+        flex-direction: column; /* Empile la navbar et le bouton */
+        height: auto;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .theme-toggle-btn {
+        position: static; /* Retire le positionnement absolu pour le mobile */
+        transform: none;
+        margin-top: 10px; /* Espace entre navbar et bouton */
+    }
 }
 
 main {
-  padding-top: 60px; /* espace égal à la hauteur du header */
+    padding-top: 60px; /* espace égal à la hauteur du header */
 }
-body, html {
-  margin: 0;
-  padding-top: 30px; /* laisse la place pour le header */
-  scroll-behavior: smooth;
-  font-family: 'Press Start 2P', monospace;
-  color: #fff;
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
-  height: 100vh;
-  cursor: url("cursor/Bob\ Lennon\ -\ Normal\ Select.cur"), auto;
 
-}
-body::before{
-content:"";
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background-image: url('images/minecraft-server-bg.jpg');
-background-size: cover;
-background-repeat: no-repeat;
-background-attachment: fixed;
-background-position: center;
-filter: blur(1px);
-opacity: 1;
-z-index: -1;
-    padding-top: 60px; /* même hauteur que le header */
-}
 /* Page sections */
 .page {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  scroll-snap-align: start;
-  padding: 40px;
-  text-align: center;
-
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    scroll-snap-align: start;
+    padding: 40px;
+    text-align: center;
 }
 
 /* Section content wrapper */
 .section-content {
-  max-width: 800px;
+    max-width: 800px;
 }
 
 /* Headings */
 h1, h2, h3 {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
+    transition: color 0.5s ease-in-out, text-shadow 0.5s ease-in-out;
 }
 
-/* Icons */
+/* Styles spécifiques aux titres pour les thèmes */
+.dark-theme h1,
+.dark-theme h2,
+.dark-theme h3 {
+    color: #fbff00; /* Jaune d'origine */
+    text-shadow: 0 0 30px #ffd900, 0 0 20px #ffc400, 0 0 30px #ff1100;
+    animation: clignotementH1 10s infinite alternate; /* Nom d'animation différent pour éviter conflit */
+}
+
+/* Je suppose que "Mahery Andrianandraina" est un h1 sur votre page */
+.light-theme h1 {
+    color: #39FF14; /* VERT NÉON pour le h1 en thème clair (Mahery Andrianandraina) */
+    text-shadow: none;
+    animation: none; /* Désactiver le clignotement */
+}
+
+.light-theme h2,
+.light-theme h3 {
+    color: #fff; /* CHANGÉ: Blanc pour les autres titres en thème clair */
+    text-shadow: none;
+    animation: none;
+}
+
+@keyframes clignotementH1 { /* Animation spécifique pour H1, H2, H3 */
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+/* Paragraphes avec classe 'matrix' */
+p.matrix {
+    transition: color 0.5s ease-in-out;
+}
+
+.dark-theme p.matrix {
+    color: #fff; /* Blanc d'origine */
+    text-shadow: none;
+}
+
+.light-theme p.matrix {
+    color: #fff; /* CHANGÉ: Blanc en thème clair */
+    text-shadow: none;
+}
+
+/* Icons (Tech & Contact) */
 ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
 }
 
 ul li {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column-reverse; /* CHANGÉ: Pour mettre le texte au-dessus */
+    align-items: center;
+    gap: 4px; /* CHANGÉ: Ajout d'un espacement entre le texte et l'icône */
 }
 
 ul li i {
-  font-size: 2.5em;
-  margin-bottom: 8px;
-  transition: transform 0.3s ease;
+    font-size: 2.5em;
+    margin-bottom: 0; /* CHANGÉ: Suppression de la marge inférieure de l'icône */
+    transition: transform 0.3s ease, color 0.3s ease; /* Ajout transition couleur */
 }
 
-ul li:hover i {
-  transform: scale(1.2);
-  color: #66ccff;
+/* Définir la couleur des icônes pour les thèmes */
+.dark-theme ul li i {
+    color: #fff; /* Blanc d'origine */
+}
+.light-theme ul li i {
+    color: #fff; /* CHANGÉ: Blanc en thème clair */
+}
+
+
+.dark-theme ul li:hover i {
+    transform: scale(1.2);
+    color: #66ccff;
+}
+
+.light-theme ul li:hover i {
+    transform: scale(1.2);
+    color: #007bff; /* Bleu d'origine au survol pour le thème clair */
 }
 
 .tech-icons span,
 .contact-icons span {
-  font-size: 0.8em;
-  margin-top: 4px;
+    font-size: 0.8em;
+    margin-top: 0; /* CHANGÉ: Suppression de la marge supérieure du texte, gérée par le 'gap' de ul li */
+    display: block; /* S'assure que le texte prend sa propre ligne */
+    transition: color 0.5s ease-in-out;
+}
+
+/* Définir la couleur du texte sous les icônes pour les thèmes */
+.dark-theme .tech-icons span,
+.dark-theme .contact-icons span {
+    color: #fff; /* Blanc d'origine */
+}
+.light-theme .tech-icons span,
+.light-theme .contact-icons span {
+    color: #fff; /* CHANGÉ: Blanc en thème clair */
 }
 
 /* Contact icons */
 .contact-icons a {
-  text-decoration: none;
-  color: white;
-  text-align: center;
+    text-decoration: none;
+    color: inherit; /* Utilise la couleur du body/thème */
+    text-align: center;
+    transition: color 0.5s ease-in-out;
 }
 
 /* Projects */
 .project-list {
-  list-style-type: disc;
-  padding-left: 40px;
-  line-height: 1.8;
-  font-size: 14px;
+    list-style-type: disc;
+    padding-left: 40px;
+    line-height: 1.8;
+    font-size: 14px;
+    transition: color 0.5s ease-in-out;
 }
 
-.smoke-pop {
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 20%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-  animation: smokePop 1.5s ease-out forwards;
-  filter: blur(10px);
-  z-index: 20;
+.dark-theme .project-list li {
+    color: #fff; /* Blanc d'origine */
 }
 
-@keyframes smokePop {
-  0% {
-    transform: scale(0.5);
-    opacity: 1;
-  }
-  80% {
-    transform: scale(2.5);
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(3);
-    opacity: 0;
-  }
+.light-theme .project-list li {
+    color: #fff; /* CHANGÉ: Blanc en thème clair */
 }
-h1{
-  font-size: 3em;
-  font-weight: bold;
-  color: #fbff00;
-  text-shadow: 0 0 30px #ffd900,
-  0 0 20px #ffc400,
-  0 0 30px #ff1100;
-  animation: clignotement 10s infinite alternate;
-}
-@keyframes clignotement{
-  0%{
-    opacity: 1;
-  }
-  50%{
-    opacity: 0.3;
-  }
-  100%{
-    opacity: 1;
-  }
-}
+
+/* Profile Photo */
 .profile-photo {
-  text-align: center;
-  margin-bottom: 15px;
+    text-align: center;
+    margin-bottom: 15px;
 }
 
 .profile-photo img {
-  width: 180px;
-  height: 180px;
-  border-radius: 10px;
-  object-fit: cover;
-
-  /* Propriétés de la bordure et de l'ombre qui seront animées */
-  border: 3px solid #ffd000; /* Couleur initiale de la bordure */
-  box-shadow: 0 0 10px #ffd000; /* Ombre initiale */
-
-  /* Animation pour le clignotement */
-  animation: glow-clignote 5s infinite alternate ease-in-out;
+    width: 180px;
+    height: 180px;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: border-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out, animation 0.5s ease-in-out;
 }
 
-/* Définition de l'animation de clignotement */
-@keyframes glow-clignote {
-  0% {
-    /* État initial / faible luminosité */
-    border-color: #ffd000; /* Couleur d'origine ou légèrement atténuée */
-    box-shadow: 0 0 10px #ffd000; /* Ombre de base */
-  }
-  50% {
-    /* État de pleine luminosité / clignotement maximal */
-    border-color: #ffffff; /* Bordure blanche éclatante (ou une couleur plus vive comme un vert fluo si vous voulez Matrix) */
-    box-shadow: 0 0 30px 15px #ffe066; /* Ombre plus large et plus intense, légèrement plus claire */
-  }
-  100% {
-    /* Retour à l'état initial / faible luminosité */
-    border-color: #ffd000;
+.dark-theme .profile-photo img {
+    border: 3px solid #ffd000; /* Jaune d'origine */
     box-shadow: 0 0 10px #ffd000;
-  }
+    animation: glow-clignote 5s infinite alternate ease-in-out;
 }
+
+.light-theme .profile-photo img {
+    border: 3px solid #007bff; /* Bordure bleue pour le thème clair (d'origine) */
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.5); /* Ombre bleue (d'origine) */
+    animation: none; /* Désactiver l'animation de clignotement */
+}
+
+@keyframes glow-clignote {
+    0% { border-color: #ffd000; box-shadow: 0 0 10px #ffd000; }
+    50% { border-color: #ffffff; box-shadow: 0 0 30px 15px #ffe066; }
+    100% { border-color: #ffd000; box-shadow: 0 0 10px #ffd000; }
+}
+
+/* Fireflies (luciobes) - si vous voulez les cacher ou changer leur couleur */
 .fireflies-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none; /* Permet de cliquer à travers les lucioles */
-  z-index: 1; /* S'assure qu'elles sont au-dessus de tout le reste */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    transition: opacity 0.5s ease-in-out;
 }
 
-.firefly {
-  position: absolute;
-  background: #ffcc00; /* Couleur de la luciole (jaune/orange) */
-  border-radius: 50%; /* Forme circulaire */
-  box-shadow: 0 0 10px 5px rgba(255, 204, 0, 0.7); /* Effet lumineux */
-  opacity: 0; /* Commence invisible */
-  animation:
-      firefly-move linear infinite,
-      firefly-flicker ease-in-out infinite;
+.light-theme .fireflies-container {
+    opacity: 0.3; /* Les rendre plus discrètes en thème clair */
 }
 
-/* Définition de l'animation de mouvement */
-@keyframes firefly-move {
-  0% {
-      transform: translate(0, 0) scale(0.5);
-      opacity: 0;
-  }
-  10% {
-      opacity: 1;
-      transform: translate(calc(var(--rand-x-start)), calc(var(--rand-y-start))) scale(0.7);
-  }
-  100% {
-      transform: translate(calc(var(--rand-x-end)), calc(var(--rand-y-end))) scale(0.5);
-      opacity: 0;
-  }
-}
-
-/* Définition de l'animation de scintillement */
-@keyframes firefly-flicker {
-  0%, 100% { opacity: 0.8; }
-  50% { opacity: 0.3; }
-}
-
-/* Attribution de valeurs aléatoires pour chaque luciole (plus complexe, mais plus réaliste) */
-/* C'est là que ça devient un peu répétitif pour CSS pur */
-/* Idéalement, on générerait cela avec JS ou un préprocesseur CSS */
-
-.firefly:nth-child(1) {
-  width: 5px; height: 5px;
-  top: 10%; left: 20%;
-  animation-duration: 15s;
-  animation-delay: 0s;
-  --rand-x-start: -50px; --rand-y-start: 100px;
-  --rand-x-end: 200px; --rand-y-end: -150px;
-}
-.firefly:nth-child(2) {
-  width: 6px; height: 6px;
-  top: 50%; left: 80%;
-  animation-duration: 18s;
-  animation-delay: 2s;
-  --rand-x-start: 100px; --rand-y-start: -50px;
-  --rand-x-end: -250px; --rand-y-end: 120px;
-}
-.firefly:nth-child(3) {
-  width: 4px; height: 4px;
-  top: 80%; left: 10%;
-  animation-duration: 12s;
-  animation-delay: 4s;
-  --rand-x-start: -100px; --rand-y-start: -80px;
-  --rand-x-end: 150px; --rand-y-end: 200px;
-}
-.firefly:nth-child(4) {
-  width: 7px; height: 7px;
-  top: 30%; left: 50%;
-  animation-duration: 20s;
-  animation-delay: 6s;
-  --rand-x-start: 50px; --rand-y-start: 200px;
-  --rand-x-end: -100px; --rand-y-end: -180px;
-}
-.firefly:nth-child(5) {
-  width: 5px; height: 5px;
-  top: 60%; left: 30%;
-  animation-duration: 16s;
-  animation-delay: 8s;
-  --rand-x-start: -20px; --rand-y-start: -100px;
-  --rand-x-end: 180px; --rand-y-end: 50px;
-}
-
-/* Ajoutez plus de .firefly:nth-child() pour plus de lucioles */
-
-/* Pour rendre les mouvements vraiment aléatoires, vous devriez idéalement
- utiliser des variables CSS personnalisées et les générer via JavaScript
- ou un préprocesseur CSS comme Sass/Less pour des boucles. */
-/* Style général pour les couches de brouillard */
-
-/* Basic styling for the modal */
-.mail-modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-.mail-modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-  max-width: 500px; /* Max width for larger screens */
-  position: relative;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-
-/* The Close Button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-/* Form styling */
-#contactForm label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-#contactForm input[type="text"],
-#contactForm input[type="email"],
-#contactForm textarea {
-  width: calc(100% - 22px); /* Account for padding and border */
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-#contactForm button {
-  background-color: #4CAF50; /* Green */
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  width: 100%;
-}
-
-#contactForm button:hover {
-  background-color: #45a049;
-}
-
-/* Add some styling for your minecraft-guy if you haven't already */
-.minecraft-guy {
-  /* Example: Make it clickable and give it a visual cue */
-  width: 100px; /* Adjust as needed */
-  height: 100px; /* Adjust as needed */
-  background-color: brown; /* Just a placeholder */
-  cursor: pointer;
-  position: absolute; /* Or wherever you want it */
-  top: 50px;
-  left: 50px;
-  border-radius: 5px;
-  text-align: center;
-  line-height: 100px;
-  color: white;
-  font-weight: bold;
-  /* You'd likely use a background-image here for an actual Minecraft character */
-}
-.scroll-indicator {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 32px;
-  height: 32px;
-  opacity: 0.8;
-  animation: bounce 1s infinite;
-  z-index: 999;
-}
-
-.scroll-indicator img {
-  width: 100%;
-  height: auto;
-  image-rendering: pixelated; /* effet pixel Minecraft */
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(-10px); }
-}
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
-  /* Animation clignotement irrégulier (style ampoule grillée) */
-  @keyframes clignotementGrille {
-    0%   { background-color: #ffb800; box-shadow: 0 0 15px #ffb800; }
-    10%  { background-color: #4a4a4a; box-shadow: none; }
-    20%  { background-color: #ffb800; box-shadow: 0 0 12px #ffb800; }
-    25%  { background-color: #4a4a4a; box-shadow: none; }
-    40%  { background-color: #ffb800; box-shadow: 0 0 20px #ffb800; }
-    50%  { background-color: #4a4a4a; box-shadow: none; }
-    55%  { background-color: #ffb800; box-shadow: 0 0 10px #ffb800; }
-    60%  { background-color: #4a4a4a; box-shadow: none; }
-    75%  { background-color: #ffb800; box-shadow: 0 0 18px #ffb800; }
-    90%  { background-color: #4a4a4a; box-shadow: none; }
-    100% { background-color: #ffb800; box-shadow: 0 0 15px #ffb800; }
-  }
-
-  /* Style bouton */
-  .btn-cv {
+/* Bouton CV */
+.btn-cv {
     position: fixed;
     bottom: 20px;
     right: 20px;
     font-family: 'Press Start 2P', cursive;
     font-size: 14px;
     padding: 12px 20px;
-    color: #1c1c1c;
-    border: 5px solid #b07a00;
+    border: 5px solid;
     border-radius: 0;
     cursor: pointer;
     text-transform: uppercase;
     user-select: none;
+    transition: all 0.3s ease-in-out;
+}
 
-    /* Couleur et effet soudure */
-    background-color: #ffb800;
+.dark-theme .btn-cv {
+    color: #1c1c1c; /* Texte sombre */
+    border-color: #b07a00; /* Bordure jaune */
+    background-color: #ffb800; /* Fond jaune */
     box-shadow:
       0 0 15px #ffb800,
       inset 0 0 5px #b07a00,
-      2px 2px 0 #6b4c00,
+      2px 2px 0 #6b4c00, /* Vert foncé pour l'effet 3D */
       -2px -2px 0 #6b4c00;
-
     animation: clignotementGrille 3s infinite;
-    transition: color 0.3s ease;
-  }
-
-  .btn-cv:hover {
-    color: #000;
-  }
-.tech-icons li a {
-  display: flex;          /* pour organiser en colonne */
-  flex-direction: column; /* icône au-dessus, texte en dessous */
-  align-items: center;    /* centrer horizontalement */
-  color: white;           /* texte + icône en blanc */
-  text-decoration: none;  /* enlever le soulignement du lien */
 }
 
-.tech-icons li a:hover {
-  color: #0f0; /* par exemple, couleur au survol */
+.light-theme .btn-cv {
+    color: #fff; /* Texte blanc sur fond sombre (d'origine) */
+    border-color: #0056b3; /* Bleu d'origine */
+    background-color: #007bff; /* Bleu d'origine */
+    box-shadow:
+      0 0 10px rgba(0, 123, 255, 0.6),
+      inset 0 0 5px rgba(0, 86, 179, 0.8),
+      2px 2px 0 rgba(0, 50, 100, 0.8),
+      -2px -2px 0 rgba(0, 50, 100, 0.8);
+    animation: none; /* Désactiver le clignotement */
 }
 
-  .btn-cv:active {
-    transform: translateY(2px);
-    animation-play-state: paused;
-    box-shadow: none;
-  }
-/* Effet flash jaune */
+.btn-cv:hover {
+    color: #000; /* Garde le noir au survol pour le thème sombre */
+}
+
+.light-theme .btn-cv:hover {
+    color: #fff; /* Garde le blanc au survol pour le thème clair */
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+
+/* Effet flash jaune (pour les liens cliqués) */
 .flash {
-  animation: flash 0.15s ease-in-out 3;
+    animation: flash 0.15s ease-in-out 3;
 }
 
 @keyframes flash {
-  0%, 100% { background: inherit; color: inherit; border-color: yellow; }
-  50% { background: white; color: black; border-color: yellow; }
+    0%, 100% { background: inherit; color: inherit; border-color: yellow; } /* Jaune d'origine */
+    50% { background: white; color: black; border-color: yellow; }
 }
 
-/* Étincelles */
-.spark {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: yellow;
-  border-radius: 50%;
-  box-shadow: 0 0 8px yellow;
-  pointer-events: none;
-  animation: sparkMove 0.6s linear forwards;
-}
-
-@keyframes sparkMove {
-  to {
-    transform: translate(var(--tx), var(--ty)) scale(0.2);
-    opacity: 0;
-  }
-}
+/* Minecraft Form */
 .minecraft-form {
- background: rgba(255, 255, 153, 0.3);
-  padding: 20px;
-  border: 4px solid #3b2f2f;
-  box-shadow: 0 0 20px #000;
-  border-radius: 10px;
-  width: 320px;
-  margin: 0 auto; /* Centre horizontalement */
-  display: flex;
-  flex-direction: column;
-  gap: 10px; /* Espace entre les champs */
+    padding: 20px;
+    border: 4px solid;
+    box-shadow: 0 0 20px #000;
+    border-radius: 10px;
+    width: 320px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: background 0.5s ease-in-out, border-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+
+.dark-theme .minecraft-form {
+    background: rgba(255, 255, 153, 0.3);
+    border-color: #3b2f2f;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+.light-theme .minecraft-form {
+    background: rgba(255, 255, 255, 0.8); /* Fond plus clair */
+    border-color: #a0a0a0; /* Bordure plus douce */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 .minecraft-form h1 {
-  text-align: center;
-  color: #fff;
-  font-size: 18px;
-  text-shadow: 2px 2px #000; /* Effet pixel Minecraft */
+    text-align: center;
+    font-size: 18px;
+    transition: color 0.5s ease-in-out, text-shadow 0.5s ease-in-out;
+}
+
+.dark-theme .minecraft-form h1 {
+    color: #fff; /* Blanc d'origine */
+    text-shadow: 2px 2px #000;
+}
+
+.light-theme .minecraft-form h1 {
+    color: #39FF14; /* VERT NÉON pour le titre du formulaire en thème clair */
+    text-shadow: none;
 }
 
 .minecraft-form label {
-  display: block;
-  margin: 8px 0 4px;
-  color: #fff;
-  font-weight: bold;
-  text-shadow: 1px 1px #000;
+    display: block;
+    margin: 8px 0 4px;
+    font-weight: bold;
+    transition: color 0.5s ease-in-out, text-shadow 0.5s ease-in-out;
+}
+
+.dark-theme .minecraft-form label {
+    color: #fff; /* Blanc d'origine */
+    text-shadow: 1px 1px #000;
+}
+
+.light-theme .minecraft-form label {
+    color: #39FF14; /* VERT NÉON pour les labels du formulaire en thème clair */
+    text-shadow: none;
 }
 
 .minecraft-form input,
 .minecraft-form textarea {
-  width: 100%;
-  padding: 6px;
-  border: 2px solid #3b2f2f;
-  border-radius: 4px;
-  font-family: "Press Start 2P", monospace; /* Police pixel */
-  font-size: 12px;
-  background: #fff;
+    width: 100%;
+    padding: 6px;
+    border: 2px solid;
+    border-radius: 4px;
+    font-family: "Press Start 2P", monospace;
+    font-size: 12px;
+    transition: background 0.5s ease-in-out, border-color 0.5s ease-in-out;
 }
 
-.minecraft-form textarea {
-  resize: none;
-  height: 80px;
+.dark-theme .minecraft-form input,
+.dark-theme .minecraft-form textarea {
+    background: #fff;
+    border-color: #3b2f2f;
+}
+
+.light-theme .minecraft-form input,
+.light-theme .minecraft-form textarea {
+    background: #eee; /* Fond plus clair pour les champs */
+    border-color: #888;
 }
 
 .minecraft-form button {
-  background: #ffd500;
-  color: black;
-  font-weight: bold;
-  padding: 8px;
-  width: 100%;
-  border: 2px solid #3b2f2f;
-  cursor: pointer;
-  margin-top: 8px;
-  font-family: "Press Start 2P", monospace;
+    font-weight: bold;
+    padding: 8px;
+    width: 100%;
+    border: 2px solid;
+    cursor: pointer;
+    margin-top: 8px;
+    font-family: "Press Start 2P", monospace;
+    transition: background 0.5s ease-in-out, border-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 
-.minecraft-form button:hover {
-  background: #c9a700;
+.dark-theme .minecraft-form button {
+    background: #ffd500;
+    color: black;
+    border-color: #3b2f2f;
 }
 
-.hp-field {
-  position: absolute;
-  left: -9999px;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  opacity: 0;
-}
-.minecraft-copyright {
-  font-family: 'Press Start 2P', monospace;
-  /* le reste pareil */
+.light-theme .minecraft-form button {
+    background: #007bff; /* Bouton bleu pour thème clair */
+    color: white;
+    border-color: #0056b3;
 }
 
-/* animation de chargement */
-/* Fond noir */
+.dark-theme .minecraft-form button:hover {
+    background: #c9a700;
+}
+
+.light-theme .minecraft-form button:hover {
+    background: #0056b3;
+}
+
+/* Loader */
 #loader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #0d0d0d;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0d0d0d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
 }
 
 /* Conteneur */
 .minecraft-loader {
-  text-align: center;
+    text-align: center;
 }
 
 /* Blocs style Minecraft */
-/* Blocs style Minecraft en jaune */
 .block {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  background: #ffd700; /* Jaune Minecraft */
-  border: 2px solid #b8860b; /* Jaune foncé pour le contour */
-  margin: 5px;
-  animation: blink 1s infinite alternate;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 2px solid;
+    margin: 5px;
+    animation: blink 1s infinite alternate;
+    transition: background 0.5s ease-in-out, border-color 0.5s ease-in-out;
 }
 
+.dark-theme .block {
+    background: #ffd700; /* Jaune Minecraft */
+    border-color: #b8860b; /* Jaune foncé pour le contour */
+}
+
+.light-theme .block {
+    background: #a9a9a9; /* Gris plus clair */
+    border-color: #696969; /* Gris foncé */
+}
 
 .block:nth-child(1) { animation-delay: 0s; }
 .block:nth-child(2) { animation-delay: 0.3s; }
@@ -651,29 +573,99 @@ h1{
 
 /* Texte style Minecraft avec glow jaune */
 .text-glow {
-  margin-top: 15px;
-  font-size: 22px;
-  font-family: 'Minecraft', sans-serif;
-  color: #ffeb3b;
-  text-shadow: 
-    0 0 5px #ffd700,
-    0 0 10px #ffb300,
-    0 0 20px #ff9800;
-  animation: glowPulse 1.5s infinite alternate;
+    margin-top: 15px;
+    font-size: 22px;
+    font-family: 'Minecraft', sans-serif; /* Assurez-vous d'importer cette police si elle n'est pas déjà là */
+    transition: color 0.5s ease-in-out, text-shadow 0.5s ease-in-out;
+    animation: glowPulse 1.5s infinite alternate;
+}
+
+.dark-theme .text-glow {
+    color: #ffeb3b; /* Jaune d'origine */
+    text-shadow:
+      0 0 5px #ffd700,
+      0 0 10px #ffb300,
+      0 0 20px #ff9800;
+}
+
+.light-theme .text-glow {
+    color: #fff; /* CHANGÉ: Blanc pour le texte du loader en thème clair */
+    text-shadow: none; /* Pas de glow pour le thème clair */
+    animation: none; /* Désactiver l'animation */
 }
 
 /* Animation glow */
 @keyframes glowPulse {
-  from {
-    text-shadow: 0 0 5px #ffd700, 0 0 10px #ffb300, 0 0 20px #ff9800;
-  }
-  to {
-    text-shadow: 0 0 10px #fff176, 0 0 20px #ffd54f, 0 0 40px #ffeb3b;
-  }
+    from { text-shadow: 0 0 5px #ffd700, 0 0 10px #ffb300, 0 0 20px #ff9800; }
+    to { text-shadow: 0 0 10px #fff176, 0 0 20px #ffd54f, 0 0 40px #ffeb3b; }
 }
 
 /* Animation bloc */
 @keyframes blink {
-  from { opacity: 1; transform: scale(1); }
-  to { opacity: 0.4; transform: scale(1.2); }
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0.4; transform: scale(1.2); }
+}
+
+/* Styles du bouton de changement de thème */
+.theme-toggle-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 1.8em;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: color 0.3s ease;
+    z-index: 1001; /* Assurez-vous qu'il est au-dessus de la navbar */
+}
+
+.dark-theme .theme-toggle-btn {
+    color: #fbff00; /* Jaune d'origine */
+}
+
+.light-theme .theme-toggle-btn {
+    color: #39FF14; /* VERT NÉON pour le bouton de thème en thème clair */
+}
+
+.theme-toggle-btn:hover {
+    color: #fff; /* Couleur au survol */
+}
+
+.light-theme .theme-toggle-btn:hover {
+    color: #7CFC00; /* Vert plus clair au survol */
+}
+
+/* Étincelles (welding effect) */
+.spark {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    box-shadow: 0 0 8px;
+    pointer-events: none;
+    animation: sparkMove 0.6s linear forwards;
+    transition: background 0.5s ease-in-out, box-shadow 0.5s ease-in-out; /* Ajout transition */
+}
+
+.dark-theme .spark {
+    background: yellow; /* Jaune d'origine */
+    box-shadow: 0 0 8px yellow;
+}
+
+.light-theme .spark {
+    background: #fff; /* CHANGÉ: Blanc pour les étincelles en thème clair */
+    box-shadow: 0 0 8px #fff;
+}
+
+@keyframes sparkMove {
+    to {
+        transform: translate(var(--tx), var(--ty)) scale(0.2);
+        opacity: 0;
+    }
+}
+
+/* Smoke Pop (Si toujours utilisé, sinon retirez) */
+.smoke-pop {
+    /* Gardez vos styles existants */
 }
