@@ -1,0 +1,114 @@
+/* Importation de polices inspirées de Minecraft */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400..700&display=swap');
+
+body {
+    font-family: 'Pixelify Sans', sans-serif;
+    background-image: url('images/minecraft-server-bg.jpg'); /* Votre image de fond sombre */
+    background-size: cover; /* L'image couvrira toute la page */
+    background-repeat: no-repeat; /* L'image ne se répétera pas */
+    background-attachment: fixed; /* L'image reste fixe quand vous défilez */
+    background-position: center; /* Centre l'image */
+   color: #FFFFFF; /* Texte principal en blanc */
+    /* Les propriétés ci-dessous ne sont pas pour le body mais peuvent être utilisées pour un overlay ou autre */
+    /* filter: blur(0px); */
+    /* opacity: 0; */
+    /* z-index: -1; */
+    /* transition: background-image 0.5s ease-in-out, filter 0.5s ease-in-out; */
+    /* background-color: #3C3C3C; /* Couleur de secours */
+}
+
+.header-block {
+    background-color: #555555; /* Gris un peu plus clair pour le haut */
+    color: #FFFFFF;
+    text-align: center;
+    padding: 20px;
+    border-bottom: 5px solid #222222; /* Bordure sombre */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Ombre pour un effet 3D */
+    /* Assurez-vous que ces propriétés (position, top, etc.) NE SONT PAS présentes ici: */
+    /* position: fixed; */
+    /* top: 0; */
+    /* width: 100%; */
+    /* z-index: 1000; */
+}
+
+.header-block h1 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 2em;
+    text-shadow: 3px 3px 0px #000000;
+    margin: 0;
+}
+
+/* ... (votre code CSS précédent) ... */
+
+.container {
+    flex-grow: 1;
+    width: 90%;
+    max-width: 900px;
+    margin: 30px auto;
+    /* Ancien : background-color: rgba(106, 106, 106, 0.9); */
+    /* Nouveau : Diminuez la valeur alpha pour plus de transparence */
+    background-color: rgba(106, 106, 106, 0.7); /* Exemple : 0.7 pour 70% d'opacité (30% de transparence) */
+    border: 5px solid #444444;
+    box-shadow: 8px 8px 0px #222222;
+    padding: 25px;
+    border-radius: 8px;
+}
+
+/* ... (le reste de votre code CSS) ... */
+
+.content-block h2 {
+    font-family: 'Press Start 2P', cursive;
+    color: #F8F8F8;
+    text-shadow: 2px 2px 0px #000000;
+    border-bottom: 2px solid #999999;
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.content-block p {
+    margin-bottom: 15px;
+    text-align: justify;
+    font-size: 1.1em;
+}
+
+.content-block p strong {
+    color: #FFFF00;
+    text-shadow: 1px 1px 0px #000000;
+}
+
+/* Icônes ASCII/Unicode */
+.content-block p .emoji {
+    font-family: 'Arial', sans-serif;
+}
+
+.footer-block {
+    background-color: #555555;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 15px;
+    border-top: 5px solid #222222;
+    margin-top: auto;
+    font-size: 0.9em;
+    font-family: 'Press Start 2P', cursive;
+    text-shadow: 2px 2px 0px #000000;
+}
+
+/* Rendre le site un peu plus responsif */
+@media (max-width: 768px) {
+    .header-block h1 {
+        font-size: 1.5em;
+    }
+    .container {
+        width: 95%;
+        margin: 20px auto;
+        padding: 15px;
+    }
+    .content-block h2 {
+        font-size: 1.2em;
+    }
+    .content-block p {
+        font-size: 1em;
+    }
+}
