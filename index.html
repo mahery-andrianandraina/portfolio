@@ -1,253 +1,290 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Mahery ANDRIANANDRAINA</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" sizes="32x32" href="images/java.png">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Mahery ANDRIANANDRAINA</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/java.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 
+<body class="dark-theme"> <header>
+        <nav class="navbar">
+            <a href="#welcome"><i>About</i></a>
+            <a href="#projects"><i>Projects</i></a>
+            <a href="#technos"><i>Skills</i></a>
+            <a href="#contact"><i>Platforms</i></a>
+            <a href="#formulaire"><i>Contact</i></a>
+        </nav>
+        <button id="themeToggleButton" class="theme-toggle-btn">
+            <i class="fas fa-sun"></i> </button>
+    </header>
 
-<body>
-  <header>
-  <nav class="navbar">
-   <a href="#welcome"><i>About</i></a>
-    <a href="#projects"><i>Projects</i></a>
-    <a href="#technos"><i>Skills</i></a>
-    <a href="#contact"><i>Platforms</i></a>
-    <a href="#formulaire"><i>Contact</i></a>
-  </nav>
-</header>
-<section class="page" id="welcome">
-  <div class="section-content">
-    <p class="matrix">Welcome to my world !</p>
-    <div class="profile-photo">
-      <img src="images/mahery.PNG" alt="Photo de Mahery">
+    <section class="page" id="welcome">
+        <div class="section-content">
+            <p class="matrix">Welcome to my world !</p>
+            <div class="profile-photo">
+                <img src="images/mahery.PNG" alt="Photo de Mahery">
+            </div>
+
+            <h1 class="matrix">Mahery ANDRIANANDRAINA</h1>
+            <p>
+                <span class="matrix">I love to code, learn, and connect.</span><br>
+                <span class="matrix">As a Java developer, I'm always looking for opportunities to grow through collaboration.</span><br>
+                <span class="matrix">Open to internships, freelance projects, or full-time roles,</span><br>
+                <span class="matrix">I am committed to contributing to innovative and impactful solutions.</span>
+            </p>
+        </div>
+    </section>
+
+    <section class="page" id="technos">
+        <h2 class="matrix">Technologies & Projects</h2>
+        <ul class="tech-icons">
+            <li title="Java">
+                <a href="https://www.java.com" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-java"></i>
+                    <span class="matrix">Java</span>
+                </a>
+            </li>
+            <li title="Spring Boot">
+                <a href="https://spring.io/projects/spring-boot" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-leaf"></i>
+                    <span class="matrix">Spring Boot</span>
+                </a>
+            </li>
+            <li title="Hibernate">
+                <a href="https://hibernate.org" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-project-diagram"></i>
+                    <span class="matrix">Hibernate</span>
+                </a>
+            </li>
+            <li title="Maven">
+                <a href="https://maven.apache.org" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-cogs"></i>
+                    <span class="matrix">Maven</span>
+                </a>
+            </li>
+            <li title="MySQL">
+                <a href="https://www.mysql.com" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-database"></i>
+                    <span class="matrix">MySQL</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+
+    <section class="page" id="projects">
+        <div class="projects">
+            <h3>Completed Projects</h3>
+            <ul class="project-list">
+                <li class="matrix">Canevas des actions commerciales – Java & MySQL</li>
+                <li class="matrix">Portfolio Website – HTML, CSS & JavaScript</li>
+                <li class="matrix">AZ Lyrics – Java & MySQL</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="page" id="contact">
+        <h2 class="matrix">Social Media</h2>
+        <ul class="contact-icons">
+            <li><a href="mailto:maheryelo2@gmail.com" title="Email" target="_blank"><i class="fas fa-envelope"></i></a></li>
+            <li><a href="https://linkedin.com/in/mahery-andrianandraina" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="https://github.com/boukely" title="GitHub" target="_blank"><i class="fab fa-github"></i></a></li>
+            <li><a href="https://facebook.com" title="Facebook" target="_blank"><i class="fab fa-facebook"></i></a></li>
+            <li><a href="https://tiktok.com" title="tiktok" target="_blank"><i class="fab fa-tiktok"></i></a></li>
+        </ul>
+    </section>
+
+    <div class="smoke-pop" style="top: 70%; left: 45%;"></div>
+
+    <script>
+        // Le script JavaScript existant pour l'effet Matrix, soudure, etc.
+        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*";
+
+        function matrixEffect(el) {
+            const originalText = el.dataset.original;
+            let revealIndex = 0;
+
+            let interval = setInterval(() => {
+                let fakeText = "";
+                for (let i = 0; i < originalText.length; i++) {
+                    fakeText += originalText[i] === " " ? " " : chars.charAt(Math.floor(Math.random() * chars.length));
+                }
+                el.textContent = fakeText;
+            }, 50);
+
+            setTimeout(() => {
+                clearInterval(interval);
+                let reveal = setInterval(() => {
+                    let shown = "";
+                    for (let i = 0; i < originalText.length; i++) {
+                        if (i <= revealIndex) {
+                            shown += originalText[i];
+                        } else {
+                            shown += originalText[i] === " " ? " " : chars.charAt(Math.floor(Math.random() * chars.length));
+                        }
+                    }
+                    el.textContent = shown;
+                    revealIndex++;
+                    if (revealIndex === originalText.length) clearInterval(reveal);
+                }, 50);
+            }, 400);
+        }
+
+        document.querySelectorAll('.matrix').forEach(el => {
+            el.dataset.original = el.textContent;
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    matrixEffect(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.matrix').forEach(el => {
+            observer.observe(el);
+        });
+
+        // --- Code effet soudure ---
+        function weldingEffect(el, callback) {
+            el.classList.add('flash');
+            setTimeout(() => el.classList.remove('flash'), 500);
+
+            const rect = el.getBoundingClientRect();
+            const startX = rect.left + rect.width / 2;
+            const startY = rect.top + rect.height / 2;
+
+            for (let i = 0; i < 25; i++) {
+                const spark = document.createElement('div');
+                spark.classList.add('spark');
+                spark.style.left = startX + 'px';
+                spark.style.top = startY + 'px';
+
+                const angle = Math.random() * Math.PI * 2;
+                const distance = Math.random() * 120 + 30;
+                const tx = Math.cos(angle) * distance + 'px';
+                const ty = Math.sin(angle) * distance + 'px';
+                spark.style.setProperty('--tx', tx);
+                spark.style.setProperty('--ty', ty);
+
+                document.body.appendChild(spark);
+                setTimeout(() => spark.remove(), 600);
+            }
+
+            const audio = new Audio('https://www.soundjay.com/electric/electric-zap-02.mp3');
+            audio.play();
+
+            setTimeout(() => {
+                if (callback) callback();
+            }, 500);
+        }
+
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                const href = link.getAttribute('href');
+
+                weldingEffect(link, () => {
+                    if (href && href !== '#') {
+                        if (link.getAttribute('target') === '_blank') {
+                            window.open(href, '_blank');
+                        } else {
+                            window.location.href = href;
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+    <div class="fireflies-container">
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
     </div>
-    
-    <h1 class="matrix">Mahery ANDRIANANDRAINA</h1>
-    <p>
-      <span class="matrix">I love to code, learn, and connect.</span><br>
-      <span class="matrix">As a Java developer, I'm always looking for opportunities to grow through collaboration.</span><br>
-      <span class="matrix">Open to internships, freelance projects, or full-time roles,</span><br>
-      <span class="matrix">I am committed to contributing to innovative and impactful solutions.</span>
-    </p>
-  </div>
-</section>
+    <a href="images/cv-mahery-andrianandraina.pdf" download class="btn-cv" title="Télécharger mon CV">Download CV</a>
+    <section class="page" id="formulaire">
+        <div class="container">
+            <form id="contactform" class="minecraft-form" action="https://formspree.io/f/mvgqlapr" method="POST">
+                <h1>📧 Send Message to Mahery</h1>
+                <label for="nom">Name</label>
+                <input type="text" id="nom" name="nom" placeholder="Your Name" required>
 
+                <label for="email">Email</label>
+                <input type="email" id="_replyto" name="email" placeholder="Your Email" required>
 
-<section class="page" id="technos">
-  <h2 class="matrix">Technologies & Projects</h2>
-  <ul class="tech-icons">
-    <li title="Java">
-      <a href="https://www.java.com" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-java"></i>
-        <span class="matrix">Java</span>
-      </a>
-    </li>
-    <li title="Spring Boot">
-      <a href="https://spring.io/projects/spring-boot" target="_blank" rel="noopener noreferrer">
-        <i class="fas fa-leaf"></i>
-        <span class="matrix">Spring Boot</span>
-      </a>
-    </li>
-    <li title="Hibernate">
-      <a href="https://hibernate.org" target="_blank" rel="noopener noreferrer">
-        <i class="fas fa-project-diagram"></i>
-        <span class="matrix">Hibernate</span>
-      </a>
-    </li>
-    <li title="Maven">
-      <a href="https://maven.apache.org" target="_blank" rel="noopener noreferrer">
-        <i class="fas fa-cogs"></i>
-        <span class="matrix">Maven</span>
-      </a>
-    </li>
-    <li title="MySQL">
-      <a href="https://www.mysql.com" target="_blank" rel="noopener noreferrer">
-        <i class="fas fa-database"></i>
-        <span class="matrix">MySQL</span>
-      </a>
-    </li>
-  </ul>
-</section>
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Your message..." required></textarea>
 
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </section>
+    <div id="loader">
+        <div class="minecraft-loader">
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="text-glow">Loading world...</div>
+        </div>
+    </div>
 
-<section class="page" id="projects">
-  <div class="projects">
-    <h3>Completed Projects</h3>
-    <ul class="project-list">
-      <li class="matrix">Canevas des actions commerciales – Java & MySQL</li>
-      <li class="matrix">Portfolio Website – HTML, CSS & JavaScript</li>
-      <li class="matrix">AZ Lyrics – Java & MySQL</li>
-    </ul>
-  </div>
-</section>
+    <script>
+        // Script pour le loader existant
+        window.addEventListener("load", function() {
+            setTimeout(function() {
+                document.getElementById("loader").style.display = "none";
+            }, 5000); // 5 secondes
+        });
 
+        // Nouveau script pour le changement de thème
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggleButton = document.getElementById('themeToggleButton');
+            const body = document.body;
+            const themeIcon = themeToggleButton.querySelector('i');
 
+            // Fonction pour basculer le thème
+            function toggleTheme() {
+                if (body.classList.contains('dark-theme')) {
+                    body.classList.remove('dark-theme');
+                    body.classList.add('light-theme');
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon'); // Changer l'icône en lune
+                    localStorage.setItem('theme', 'light'); // Sauvegarder le thème
+                } else {
+                    body.classList.remove('light-theme');
+                    body.classList.add('dark-theme');
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun'); // Changer l'icône en soleil
+                    localStorage.setItem('theme', 'dark'); // Sauvegarder le thème
+                }
+            }
 
-<section class="page" id="contact">
-  <h2 class="matrix">Social Media</h2>
-  <ul class="contact-icons">
-    <li><a href="mailto:maheryelo2@gmail.com" title="Email" target="_blank"><i class="fas fa-envelope"></i></a></li>
-    <li><a href="https://linkedin.com/in/mahery-andrianandraina" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-    <li><a href="https://github.com/boukely" title="GitHub" target="_blank"><i class="fab fa-github"></i></a></li>
-    <li><a href="https://facebook.com" title="Facebook" target="_blank"><i class="fab fa-facebook"></i></a></li>
-    <li><a href="https://tiktok.com" title="tiktok" target="_blank"><i class="fab fa-tiktok"></i></a></li>
-  </ul>
-</section>
+            // Vérifier le thème sauvegardé localement au chargement de la page
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                body.classList.remove('dark-theme');
+                body.classList.add('light-theme');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            } else {
+                body.classList.add('dark-theme'); // Thème sombre par défaut si aucun ou "dark" sauvegardé
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
 
-<div class="smoke-pop" style="top: 70%; left: 45%;"></div>
-
-<script>
-  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*";
-
-  function matrixEffect(el) {
-    const originalText = el.dataset.original;
-    let revealIndex = 0;
-
-    let interval = setInterval(() => {
-      let fakeText = "";
-      for (let i = 0; i < originalText.length; i++) {
-        fakeText += originalText[i] === " " ? " " : chars.charAt(Math.floor(Math.random() * chars.length));
-      }
-      el.textContent = fakeText;
-    }, 50);
-
-    setTimeout(() => {
-      clearInterval(interval);
-      let reveal = setInterval(() => {
-        let shown = "";
-        for (let i = 0; i < originalText.length; i++) {
-          if (i <= revealIndex) {
-            shown += originalText[i];
-          } else {
-            shown += originalText[i] === " " ? " " : chars.charAt(Math.floor(Math.random() * chars.length));
-          }
-        }
-        el.textContent = shown;
-        revealIndex++;
-        if (revealIndex === originalText.length) clearInterval(reveal);
-      }, 50);
-    }, 400);
-  }
-
-  // Stocke le texte original
-  document.querySelectorAll('.matrix').forEach(el => {
-    el.dataset.original = el.textContent;
-  });
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        matrixEffect(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.matrix').forEach(el => {
-    observer.observe(el);
-  });
-  // --- Code effet soudure ---
-function weldingEffect(el, callback) {
-  el.classList.add('flash');
-  setTimeout(() => el.classList.remove('flash'), 500);
-
-  const rect = el.getBoundingClientRect();
-  const startX = rect.left + rect.width / 2;
-  const startY = rect.top + rect.height / 2;
-
-  for (let i = 0; i < 25; i++) {
-    const spark = document.createElement('div');
-    spark.classList.add('spark');
-    spark.style.left = startX + 'px';
-    spark.style.top = startY + 'px';
-
-    const angle = Math.random() * Math.PI * 2;
-    const distance = Math.random() * 120 + 30;
-    const tx = Math.cos(angle) * distance + 'px';
-    const ty = Math.sin(angle) * distance + 'px';
-    spark.style.setProperty('--tx', tx);
-    spark.style.setProperty('--ty', ty);
-
-    document.body.appendChild(spark);
-    setTimeout(() => spark.remove(), 600);
-  }
-
-  const audio = new Audio('https://www.soundjay.com/electric/electric-zap-02.mp3');
-  audio.play();
-
-  setTimeout(() => {
-    if (callback) callback();
-  }, 500);
-}
-
-document.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    const href = link.getAttribute('href');
-
-    weldingEffect(link, () => {
-      if (href && href !== '#') {
-        if (link.getAttribute('target') === '_blank') {
-          window.open(href, '_blank');
-        } else {
-          window.location.href = href;
-        }
-      }
-    });
-  });
-});
-</script>
-<div class="fireflies-container">
-  <div class="firefly"></div>
-  <div class="firefly"></div>
-  <div class="firefly"></div>
-  <div class="firefly"></div>
-  <div class="firefly"></div>
-  <div class="firefly"></div>
-  <div class="firefly"></div>
-  <div class="firefly"></div>
-  <div class="firefly"></div>
-  <div class="firefly"></div>
-</div>
-<a href="images/cv-mahery-andrianandraina.pdf" download class="btn-cv" title="Télécharger mon CV">Download CV</a>
-  <section class="page" id="formulaire">
-<div class="container">
-     <form id= "contactform" class="minecraft-form" action="https://formspree.io/f/mvgqlapr" method="POST">
-      <h1>📧 Send Message to Mahery</h1>
-      <label for="nom">Name</label>
-      <input type="text" id="nom" name="nom" placeholder="Your Name" required>
-
-      <label for="email">Email</label>
-      <input type="email" id="_replyto" name="email" placeholder="Your Email" required>
-
-      <label for="message">Message</label>
-      <textarea id="message" name="message" placeholder="Your message..." required></textarea>
-
-      <button type="submit">Submit</button>
-    </form>
-  </div>
-</section>
-<div id="loader">
-  <div class="minecraft-loader">
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="text-glow">Loading world...</div>
-  </div>
-</div>
-
-<script>
-  window.addEventListener("load", function() {
-    setTimeout(function() {
-      document.getElementById("loader").style.display = "none";
-    }, 5000); // 5 secondes
-  });
-</script>
-
+            // Ajouter l'écouteur d'événement au bouton
+            themeToggleButton.addEventListener('click', toggleTheme);
+        });
+    </script>
 </body>
 </html>
