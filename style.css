@@ -227,21 +227,36 @@ ul {
     display: flex;
     justify-content: center;
     gap: 40px;
-    flex-wrap: wrap;
 }
 
 ul li {
     display: flex;
-    flex-direction: column-reverse; /* CHANGÉ: Pour mettre le texte au-dessus */
+    flex-direction: column; /* icône au-dessus, texte en dessous */
     align-items: center;
-    gap: 4px; /* CHANGÉ: Ajout d'un espacement entre le texte et l'icône */
+    gap: 6px; /* espace entre icône et texte */
 }
 
 ul li i {
     font-size: 2.5em;
-    margin-bottom: 0; /* CHANGÉ: Suppression de la marge inférieure de l'icône */
-    transition: transform 0.3s ease, color 0.3s ease; /* Ajout transition couleur */
+    transition: transform 0.3s ease, color 0.3s ease;
 }
+
+/* --- Correction liens --- */
+ul li a {
+    text-decoration: none;  /* pas de soulignement */
+    color: inherit;         /* garde la couleur du texte */
+    outline: none;          /* enlève le surlignage bleu au clic */
+    display: flex;
+    flex-direction: column; /* icône au-dessus, texte en dessous */
+    align-items: center;
+    gap: 6px;
+}
+
+ul li a:focus,
+ul li a:active {
+    outline: none; /* enlève le contour bleu au focus */
+}
+
 
 /* Définir la couleur des icônes pour les thèmes */
 .dark-theme ul li i {
